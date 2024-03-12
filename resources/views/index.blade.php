@@ -27,6 +27,16 @@
                     <th>{{ $item->id }}</th>
                     <th>{{ $item->title }}</th>
                     <th>{{ $item->description }}</th>
+                    <th>
+                         <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                            <a href="{{ route('courses.edit', $item->id) }}"
+                                class="btn btn-outline-primary rounded">Editar</a>
+                                 <form action="{{ route('courses.destroy', $item->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm ms-2">Eliminar</button>
+                            </form>
+                    </th>
                 </tr>
             @endforeach
         </tbody>

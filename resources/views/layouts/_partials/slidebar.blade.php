@@ -7,7 +7,7 @@
                 </a>
                 <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="{{ route('cursos.index') }}" class="nav-link px-sm-0 px-2">
+                        <a href="{{ route('courses.index') }}" class="nav-link px-sm-0 px-2">
                             <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Cursos</span>
                         </a>
                     </li>
