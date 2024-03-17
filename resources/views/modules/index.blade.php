@@ -25,24 +25,25 @@
         <tbody>
             @foreach ($modules as $item)
                 <tr>
-                    <th>{{ $item->id }}</th>
-                    <th>{{ $item->title }}</th>
-                    <th>{{ $item->description }}</th>
-                    <th>{{ $item->course->title }}</th>
-                    <th>
+                    <td>{{ $item->id }}</td>
+                    <td>{{ $item->title }}</td>
+                    <td>{{ $item->description }}</td>
+                    <td>{{ $item->course->title }}</td>
+                    <td>
                         @if ($item->user && $item->user->id === auth()->user()->id)
                             <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                <a href="{{ route('modules.edit', $item->id) }}"
-                                   class="btn btn-outline-primary rounded">Editar</a>
+                                <a href="{{ route('modules.edit', $item->id) }}" class="btn btn-outline-primary rounded">Editar</a>
                                 <form action="{{ route('modules.destroy', $item->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm ms-2">Eliminar</button>
                                 </form>
+                            </div>
                         @endif
-                    </th>
+                    </td>
                 </tr>
             @endforeach
+
         </tbody>
     </table>
 @endsection
