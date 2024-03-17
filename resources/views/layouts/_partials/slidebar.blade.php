@@ -11,6 +11,11 @@
                             <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Cursos</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('modules.index') }}" class="nav-link px-sm-0 px-2">
+                            <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Modulos</span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">

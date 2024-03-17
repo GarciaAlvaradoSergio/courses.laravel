@@ -30,18 +30,10 @@ class CourseController extends Controller
             'fFinal' => 'required',
         ]);
 
-        $course = new Course();
-        $course->title = $validated['title'];
-        $course->description = $validated['description'];
-        $course->fInicio = $validated['fInicio'];
-        $course->fFinal = $validated['fFinal'];
+        $request->user()->courses()->create($validated);
 
-        // Si tienes un usuario asociado al curso, puedes establecer su user_id aquí
-        // $course->user_id = $user->id;
+        return redirect(route('courses.index'));
 
-        $course->save();
-
-        return redirect()->route('courses.index')->with('success', 'Curso creada exitosamente.');
     }
 
     public function show(Course $course): View

@@ -18,6 +18,7 @@
                 <th scope="col">#</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Descripción</th>
+                <th scope="col">Creado por</th>
                 <th scope="col">Opciones</th>
             </tr>
         </thead>
@@ -27,11 +28,12 @@
                     <th>{{ $item->id }}</th>
                     <th>{{ $item->title }}</th>
                     <th>{{ $item->description }}</th>
+                    <th>{{ $item->user->name }}</th>
                     <th>
-                         <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                             <a href="{{ route('courses.edit', $item->id) }}"
-                                class="btn btn-outline-primary rounded">Editar</a>
-                                 <form action="{{ route('courses.destroy', $item->id) }}" method="post">
+                               class="btn btn-outline-primary rounded">Editar</a>
+                            <form action="{{ route('courses.destroy', $item->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm ms-2">Eliminar</button>
