@@ -11,9 +11,10 @@ class CourseController extends Controller
 {
     public function index(): View
     {
-        $courses = Course::all();
+        return view('courses.index', [
+            'courses' => Course::with('user')->latest()->get(),
+        ]);
 
-        return view('courses.index', compact('courses'));
     }
 
     public function create(): View
@@ -43,12 +44,15 @@ class CourseController extends Controller
 
     public function edit(Course $course): View
     {
+        $this->authorize('update', $course);
 
-        return view('courses.edit', compact('course'));
+        return view('courses.edit', ['course' => $course]);
     }
 
     public function update(Request $request, Course $course): RedirectResponse
     {
+
+        $this->authorize('update', $course);
         $validatedData = $request->validate([
             'title' => 'required|string|max:155',
             'description' => 'required|string|max:300',
@@ -69,8 +73,9 @@ class CourseController extends Controller
 
     public function destroy(Course $course): RedirectResponse
     {
+        $this->authorize('delete', $course);
         $course->delete();
 
-        return redirect()->route('courses.index')->with('success', 'Curso eliminada exitosamente');
+        return redirect()->route('courses.index')->with('success', 'Curso eliminado exitosamente');
     }
 }

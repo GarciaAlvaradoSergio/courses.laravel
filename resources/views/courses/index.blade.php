@@ -18,6 +18,7 @@
                 <th scope="col">Titulo</th>
                 <th scope="col">Descripción</th>
                 <th scope="col">Creado por</th>
+                <th>Fecha de creación</th>
                 <th scope="col">Opciones</th>
             </tr>
         </thead>
@@ -26,8 +27,9 @@
                 <tr>
                     <th>{{ $item->id }}</th>
                     <th>{{ $item->title }}</th>
-                    <th>{{ $item->description }}</th>
+                    <th>{{ Str::limit($item->description, 30) }}</th>
                     <th>{{ $item->user->name }}</th>
+                    <th>{{ $item->created_at->format('j M Y') }}</th>
                     <th>
                         @if ($item->user->is(auth()->user()))
                             <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
