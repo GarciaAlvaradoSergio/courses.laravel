@@ -20,3 +20,7 @@ Route::get('/courses/edit/{course}', [CourseController::class, 'edit'])->name('c
 Route::put('/courses/update/{course}', [CourseController::class, 'update'])->name('courses.update');
 Route::get('/courses/show/{course}', [CourseController::class, 'show'])->name('courses.show');
 Route::delete('/courses/destroy/{course}', [CourseController::class, 'destroy'])->name('courses.destroy');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
