@@ -9,10 +9,11 @@ use Illuminate\View\View;
 
 class CourseController extends Controller
 {
-   public function index(): View
+    public function index(): View
     {
         $courses = Course::all();
-        return view('index', compact('courses'));
+
+        return view('courses.index', compact('courses'));
     }
 
     public function create(): View
@@ -50,33 +51,34 @@ class CourseController extends Controller
 
     public function edit(Course $course): View
     {
-        
+
         return view('courses.edit', compact('course'));
     }
 
-public function update(Request $request, Course $course): RedirectResponse
-{
-    $validatedData = $request->validate([
-        'title' => 'required|string|max:155',
-        'description' => 'required|string|max:300',
-        'fInicio' => 'required',
-        'fFinal' => 'required',
-    ]);
+    public function update(Request $request, Course $course): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:155',
+            'description' => 'required|string|max:300',
+            'fInicio' => 'required',
+            'fFinal' => 'required',
+        ]);
 
-    // Actualizar el curso con los datos validados
-    $course->update([
-        'title' => $validatedData['title'],
-        'description' => $validatedData['description'],
-        'fInicio' => $validatedData['fInicio'],
-        'fFinal' => $validatedData['fFinal'],
-    ]);
+        // Actualizar el curso con los datos validados
+        $course->update([
+            'title' => $validatedData['title'],
+            'description' => $validatedData['description'],
+            'fInicio' => $validatedData['fInicio'],
+            'fFinal' => $validatedData['fFinal'],
+        ]);
 
-    return redirect()->route('courses.index')->with('success', 'Curso actualizado exitosamente.');
-}
+        return redirect()->route('courses.index')->with('success', 'Curso actualizado exitosamente.');
+    }
 
     public function destroy(Course $course): RedirectResponse
     {
         $course->delete();
+
         return redirect()->route('courses.index')->with('success', 'Curso eliminada exitosamente');
     }
 }

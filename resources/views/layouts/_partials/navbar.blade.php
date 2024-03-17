@@ -15,7 +15,13 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a class="btn btn-dark" href="#">Iniciar sesión</a>
+                    @guest
+                        @if (Request::is('login'))
+                            <a class="btn btn-dark" href="{{ route('register') }}">Registrate aquí</a>
+                        @else
+                            <a class="btn btn-dark" href="{{ route('login') }}">Iniciar sesión</a>
+                        @endif
+                    @endguest
                 </div>
             </div>
         </div>
