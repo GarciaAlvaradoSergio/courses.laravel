@@ -30,7 +30,7 @@
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->course->title }}</td>
                     <td>
-                        @if ($item->user && $item->user->id === auth()->user()->id)
+                        @if (auth()->user() && auth()->user()->id === $item->id)
                             <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
                                 <a href="{{ route('modules.edit', $item->id) }}" class="btn btn-outline-primary rounded">Editar</a>
                                 <form action="{{ route('modules.destroy', $item->id) }}" method="post">
@@ -39,6 +39,8 @@
                                     <button type="submit" class="btn btn-danger btn-sm ms-2">Eliminar</button>
                                 </form>
                             </div>
+                        @else
+                            <p>No eres dueño de este modulo</p>
                         @endif
                     </td>
                 </tr>
