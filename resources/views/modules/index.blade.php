@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <h3>Modulos</h3>
     <hr />
     <div class="d-flex mb-3">
@@ -30,22 +28,19 @@
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->course->title }}</td>
                     <td>
-                        @if (auth()->user() && auth()->user()->id === $item->id)
-                            <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                                <a href="{{ route('modules.edit', $item->id) }}" class="btn btn-outline-primary rounded">Editar</a>
-                                <form action="{{ route('modules.destroy', $item->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger btn-sm ms-2">Eliminar</button>
-                                </form>
-                            </div>
-                        @else
-                            <p>No eres dueño de este modulo</p>
-                        @endif
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                            <a href="{{ route('modules.edit', $item->id) }}" class="btn btn-outline-primary rounded">Editar</a>
+                            <form action="{{ route('modules.destroy', $item->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm ms-2">Eliminar</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             @endforeach
 
         </tbody>
     </table>
-@endsection
+
+</x-app-layout>

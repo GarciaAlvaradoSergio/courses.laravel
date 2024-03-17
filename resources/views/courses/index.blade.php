@@ -1,6 +1,5 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
     <h3>Cursos</h3>
     <hr />
     <div class="d-flex mb-3">
@@ -30,17 +29,21 @@
                     <th>{{ $item->description }}</th>
                     <th>{{ $item->user->name }}</th>
                     <th>
-                        <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
-                            <a href="{{ route('courses.edit', $item->id) }}"
-                               class="btn btn-outline-primary rounded">Editar</a>
-                            <form action="{{ route('courses.destroy', $item->id) }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm ms-2">Eliminar</button>
-                            </form>
+                        @if ($item->user->is(auth()->user()))
+                            <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                                <a href="{{ route('courses.edit', $item->id) }}"
+                                   class="btn btn-outline-primary rounded">Editar</a>
+                                <form action="{{ route('courses.destroy', $item->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger btn-sm ms-2">Eliminar</button>
+                                </form>
+                            @else
+                                <span class="badge text-bg-secondary">No tienes acceso</span>
+                        @endif
                     </th>
                 </tr>
             @endforeach
         </tbody>
     </table>
-@endsection
+</x-app-layout>

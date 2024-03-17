@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <h3>Crear nuevo modulo</h3>
     <div class="row justify-content-center mt-4">
         <div class="col-md-8">
@@ -29,4 +27,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>

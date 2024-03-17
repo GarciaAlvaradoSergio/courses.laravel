@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <form action="{{ route('courses.update', $course->id) }}" method="POST">
         @csrf
         @method('PUT')
@@ -15,23 +13,23 @@
                             <div class="mb-3">
                                 <label for="title" class="form-label">Título</label>
                                 <input type="text" class="form-control" id="title" name="title"
-                                    value="{{ $course->title }}" required>
+                                       value="{{ $course->title }}" required>
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Descripción</label>
                                 <textarea class="form-control" id="description" name="description" rows="3">{{ $course->description }}</textarea>
                             </div>
-                           
-                             <div class="row mb-3">
-                            <div class="col">
-                                <label for="inputCity" class="form-label">Fecha de inicio</label>
-                                <input name="fInicio" type="date" class="form-control" placeholder="First name" aria-label="First name" value="{{ $course->fInicio}}">
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="inputCity" class="form-label">Fecha de inicio</label>
+                                    <input name="fInicio" type="date" class="form-control" value="{{ $course->fInicio }}">
+                                </div>
+                                <div class="col">
+                                    <label for="inputCity" class="form-label">Fecha de terminación</label>
+                                    <input name="fFinal" type="date" class="form-control" value="{{ $course->fFinal }}">
+                                </div>
                             </div>
-                            <div class="col">
-                                <label for="inputCity" class="form-label">Fecha de terminación</label>
-                                <input name="fFinal" value="{{ $course->fFinal" type="date" class="form-control" placeholder="Last name" aria-label="Last name">
-                            </div>
-                        </div>
                         </div>
                     </div>
                 </div>
@@ -41,4 +39,4 @@
             <button type="submit" class="btn btn-primary">Actualizar Tarea</button>
         </div>
     </form>
-@endsection
+</x-app-layout>

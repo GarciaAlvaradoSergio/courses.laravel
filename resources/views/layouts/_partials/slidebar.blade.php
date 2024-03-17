@@ -45,7 +45,7 @@
         <div class="col d-flex flex-column h-100">
             <main class="row">
                 <div class="col pt-4">
-                    @yield('content')
+                    {{ $slot }}
                 </div>
             </main>
         </div>
