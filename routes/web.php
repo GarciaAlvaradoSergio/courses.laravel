@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('courses', CourseController::class)->middleware(['auth', 'verified']);
-
 Route::resource('modules', ModuleController::class)->middleware(['auth', 'verified']);
+Route::resource('lessons', LessonController::class)->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
