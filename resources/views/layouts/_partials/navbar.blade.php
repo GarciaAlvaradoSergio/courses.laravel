@@ -15,6 +15,9 @@
                     </li>
                 </ul>
                 <div class="d-flex">
+                    @auth
+                        <a class="btn btn-dark" href="{{ route('dashboard') }}">Ir al panel</a>
+                    @endauth
                     @guest
                         @if (Request::is('login'))
                             <a class="btn btn-dark" href="{{ route('register') }}">Registrate aquí</a>
