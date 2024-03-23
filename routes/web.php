@@ -4,6 +4,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,4 +36,6 @@ Route::resource('courses', CourseController::class)->middleware(['auth', 'verifi
 Route::resource('modules', ModuleController::class)->middleware(['auth', 'verified']);
 Route::resource('lessons', LessonController::class)->middleware(['auth', 'verified']);
 
+Route::get('users/export/', [UserController::class, 'export'])->name('users.export');
+Route::resource('users', UserController::class)->middleware(['auth', 'verified']);
 require __DIR__.'/auth.php';
